@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
 import Image from 'next/image';
+import { siteConfig } from '@/config/siteConfig';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,43 +30,27 @@ const Header = () => {
     };
   }, []);
 
-  const navItems = [
-    { name: 'Início', target: 'home' },
-    { name: 'Sobre', target: 'about' },
-    { name: 'Serviços', target: 'services' },
-    { name: 'Depoimentos', target: 'testimonials' },
-    { name: 'Contato', target: 'contact' },
-  ];
-
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-white bg-opacity-95 backdrop-blur-sm shadow-md py-2' 
-          : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="container flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          {/* Logo pode ser substituído por uma imagem real */}
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled ? 'bg-white shadow-md' : 'bg-transparent'
+    }`}>
+      <div className="container flex items-center justify-between h-20">
+        <Link href="/" className="flex items-center">
           <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-[var(--gold)]">
             <div className="absolute inset-0 flex items-center justify-center bg-[var(--primary)]">
-              <span className="text-xl font-semibold text-white">BS</span>
+              <span className="text-lg font-semibold text-white">BS</span>
             </div>
           </div>
-          <div>
-            <h1 className="text-2xl font-bold">
-              <span className="text-[var(--primary)]">Beatriz</span>
-              <span className="gold-accent">Strobel</span>
-            </h1>
-            <div className="h-0.5 w-full bg-gradient-to-r from-[var(--gold)] to-transparent"></div>
-          </div>
+          <h1 className="ml-3 text-xl font-semibold">
+            <span className={scrolled ? 'text-[var(--primary)]' : 'text-white'}>Beatriz</span>
+            <span className="gold-accent">Strobel</span>
+          </h1>
         </Link>
 
-        {/* Desktop Menu */}
+        {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex space-x-8">
-            {navItems.map((item) => (
+            {siteConfig.navigation.mainItems.map((item) => (
               <li key={item.target}>
                 <ScrollLink
                   to={item.target}
@@ -73,9 +58,9 @@ const Header = () => {
                   smooth={true}
                   offset={-80}
                   duration={500}
-                  className={`text-lg font-medium cursor-pointer transition-all duration-300
-                    ${scrolled ? 'text-[var(--foreground)]' : 'text-white'} 
-                    hover:text-[var(--gold)]`}
+                  className={`text-sm font-medium cursor-pointer transition-colors ${
+                    scrolled ? 'text-[var(--foreground)] hover:text-[var(--primary)]' : 'text-white hover:text-[var(--gold)]'
+                  }`}
                 >
                   {item.name}
                 </ScrollLink>
@@ -118,8 +103,8 @@ const Header = () => {
             </Link>
           </div>
           
-          <ul className="flex flex-col p-6 space-y-6">
-            {navItems.map((item) => (
+          <ul className="px-6">
+            {siteConfig.navigation.mainItems.map((item) => (
               <li key={item.target}>
                 <ScrollLink
                   to={item.target}

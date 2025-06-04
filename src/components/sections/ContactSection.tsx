@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaWhatsapp, FaClock } from 'react-icons/fa';
+import { siteConfig } from '@/config/siteConfig';
+import DecorativeCorners from '../ui/DecorativeCorners';
 
 const ContactSection = () => {
   const [formState, setFormState] = useState({
@@ -54,8 +56,10 @@ const ContactSection = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="p-8 bg-white rounded-lg shadow-md"
+            className="p-8 bg-white rounded-lg shadow-md relative"
           >
+            <DecorativeCorners />
+            
             {formState.submitted ? (
               <div className="flex flex-col items-center justify-center h-full py-10">
                 <div className="p-4 mb-6 text-white rounded-full bg-green-500">
@@ -130,12 +134,11 @@ const ContactSection = () => {
                     className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:outline-none"
                   >
                     <option value="">Selecione um serviço</option>
-                    <option value="limpeza">Limpeza de Pele</option>
-                    <option value="drenagem">Drenagem Linfática</option>
-                    <option value="sobrancelhas">Design de Sobrancelhas</option>
-                    <option value="massagem">Massagem Modeladora</option>
-                    <option value="peeling">Peeling Facial</option>
-                    <option value="depilacao">Depilação</option>
+                    {siteConfig.services.map(service => (
+                      <option key={service.id} value={service.value}>
+                        {service.name}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 
@@ -152,7 +155,7 @@ const ContactSection = () => {
                   ></textarea>
                 </div>
                 
-                <div className="pt-2">
+                <div>
                   <button 
                     type="submit" 
                     className="w-full btn-primary"
@@ -172,15 +175,19 @@ const ContactSection = () => {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-between"
           >
-            <div className="p-8 mb-8 bg-white rounded-lg shadow-md">
+            <div className="p-8 mb-8 bg-white rounded-lg shadow-md relative">
+              <DecorativeCorners />
               <h3 className="mb-6 text-xl font-semibold">Informações de Contato</h3>
               
-              <ul className="space-y-4">
+              <ul className="space-y-6">
                 <li className="flex items-start">
                   <FaMapMarkerAlt className="mt-1 mr-3 text-[var(--primary)]" size={20} />
                   <div>
                     <p className="font-medium">Endereço</p>
-                    <p className="text-gray-600">Av. Principal, 123, Centro<br />São Paulo - SP, 01000-000</p>
+                    <p className="text-gray-600">
+                      {siteConfig.contact.address.street}, {siteConfig.contact.address.neighborhood}<br />
+                      {siteConfig.contact.address.city} - {siteConfig.contact.address.state}, {siteConfig.contact.address.zipCode}
+                    </p>
                   </div>
                 </li>
                 
@@ -188,7 +195,7 @@ const ContactSection = () => {
                   <FaPhone className="mt-1 mr-3 text-[var(--primary)]" size={20} />
                   <div>
                     <p className="font-medium">Telefone</p>
-                    <p className="text-gray-600">(11) 9876-5432</p>
+                    <p className="text-gray-600">{siteConfig.contact.phone}</p>
                   </div>
                 </li>
                 
@@ -196,7 +203,7 @@ const ContactSection = () => {
                   <FaWhatsapp className="mt-1 mr-3 text-[var(--primary)]" size={20} />
                   <div>
                     <p className="font-medium">WhatsApp</p>
-                    <p className="text-gray-600">(11) 98765-4321</p>
+                    <p className="text-gray-600">{siteConfig.contact.whatsapp}</p>
                   </div>
                 </li>
                 
@@ -204,37 +211,38 @@ const ContactSection = () => {
                   <FaEnvelope className="mt-1 mr-3 text-[var(--primary)]" size={20} />
                   <div>
                     <p className="font-medium">E-mail</p>
-                    <p className="text-gray-600">contato@belezaestetica.com.br</p>
+                    <p className="text-gray-600">{siteConfig.contact.email}</p>
                   </div>
                 </li>
               </ul>
             </div>
             
-            <div className="p-8 bg-white rounded-lg shadow-md">
+            <div className="p-8 bg-white rounded-lg shadow-md relative">
+              <DecorativeCorners />
               <h3 className="mb-6 text-xl font-semibold">Horário de Funcionamento</h3>
               
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <FaClock className="mt-1 mr-3 text-[var(--primary)]" size={20} />
                   <div>
-                    <p className="font-medium">Segunda a Sexta</p>
-                    <p className="text-gray-600">9h às 19h</p>
+                    <p className="font-medium">{siteConfig.businessHours.weekdays.days}</p>
+                    <p className="text-gray-600">{siteConfig.businessHours.weekdays.hours}</p>
                   </div>
                 </li>
                 
                 <li className="flex items-start">
                   <FaClock className="mt-1 mr-3 text-[var(--primary)]" size={20} />
                   <div>
-                    <p className="font-medium">Sábado</p>
-                    <p className="text-gray-600">9h às 16h</p>
+                    <p className="font-medium">{siteConfig.businessHours.saturday.days}</p>
+                    <p className="text-gray-600">{siteConfig.businessHours.saturday.hours}</p>
                   </div>
                 </li>
                 
                 <li className="flex items-start">
                   <FaClock className="mt-1 mr-3 text-[var(--primary)]" size={20} />
                   <div>
-                    <p className="font-medium">Domingo</p>
-                    <p className="text-gray-600">Fechado</p>
+                    <p className="font-medium">{siteConfig.businessHours.sunday.days}</p>
+                    <p className="text-gray-600">{siteConfig.businessHours.sunday.hours}</p>
                   </div>
                 </li>
               </ul>

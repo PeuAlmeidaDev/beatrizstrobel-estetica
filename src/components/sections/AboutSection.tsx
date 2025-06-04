@@ -38,8 +38,8 @@ const AboutSection = () => {
           >
             <div className="relative">
               {/* Moldura decorativa */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-[var(--gold)]"></div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-[var(--gold)]"></div>
+              <div className="absolute -top-2 -left-2 w-20 h-20 border-t-2 border-l-2 border-[var(--gold)]"></div>
+              <div className="absolute -bottom-2 -right-2 w-20 h-20 border-b-2 border-r-2 border-[var(--gold)]"></div>
               
               <div className="relative h-[500px] w-full rounded-sm overflow-hidden shadow-xl bg-gradient-to-br from-[#9F7E69]/20 to-[#7A6052]/30">
                 {/* Elemento decorativo em vez de imagem */}
@@ -59,7 +59,7 @@ const AboutSection = () => {
               </div>
               
               {/* Badge de qualidade */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-white shadow-lg flex items-center justify-center p-2">
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center p-2">
                 <div className="w-full h-full rounded-full border-2 border-[var(--gold)] flex items-center justify-center flex-col">
                   <span className="text-xs font-medium text-[var(--primary)]">CERTIFICAÇÃO</span>
                   <span className="font-serif text-xl gold-accent">Premium</span>

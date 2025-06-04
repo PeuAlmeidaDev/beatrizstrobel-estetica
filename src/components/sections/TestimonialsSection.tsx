@@ -168,8 +168,8 @@ const TestimonialsSection = () => {
           className="max-w-3xl p-10 mx-auto mt-20 text-center bg-white rounded-sm shadow-xl border border-[var(--secondary)] relative"
         >
           {/* Elementos decorativos */}
-          <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[var(--gold)]"></div>
-          <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[var(--gold)]"></div>
+          <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-[var(--gold)]"></div>
+          <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-[var(--gold)]"></div>
           
           <h3 className="mb-4 text-2xl font-serif text-[var(--primary)]">
             Experimente a Transformação

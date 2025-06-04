@@ -3,19 +3,11 @@
 import Link from 'next/link';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelope, FaHeart } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
-import Image from 'next/image';
+import { siteConfig } from '@/config/siteConfig';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
-  const navItems = [
-    { name: 'Início', target: 'home' },
-    { name: 'Sobre', target: 'about' },
-    { name: 'Serviços', target: 'services' },
-    { name: 'Depoimentos', target: 'testimonials' },
-    { name: 'Contato', target: 'contact' },
-  ];
-
   return (
     <footer className="bg-[var(--foreground)] text-white pt-20 pb-10 relative">
       {/* Elementos decorativos */}
@@ -24,39 +16,36 @@ const Footer = () => {
       
       <div className="container">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-          {/* Logo e Descrição */}
-          <div className="space-y-6">
-            <Link href="/" className="flex flex-col items-start">
-              <div className="flex items-center space-x-2">
-                <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-[var(--gold)]">
+          {/* Logo e Redes Sociais */}
+          <div>
+            <Link href="/" className="inline-block mb-6">
+              <div className="flex items-center">
+                <div className="relative w-12 h-12 overflow-hidden rounded-full border-2 border-[var(--gold)]">
                   <div className="absolute inset-0 flex items-center justify-center bg-[var(--primary)]">
                     <span className="text-xl font-semibold text-white">BS</span>
                   </div>
                 </div>
-                <div>
-                  <h1 className="text-2xl font-serif">
+                <div className="ml-3">
+                  <h2 className="text-xl font-semibold">
                     <span className="text-white">Beatriz</span>
                     <span className="text-[var(--gold)]">Strobel</span>
-                  </h1>
+                  </h2>
                 </div>
               </div>
-              <div className="w-32 h-0.5 mt-2 bg-gradient-to-r from-[var(--gold)] to-transparent"></div>
             </Link>
-            
-            <p className="text-sm font-light text-gray-300">
-              Oferecemos tratamentos estéticos exclusivos e personalizados para realçar sua beleza natural e elevar sua autoconfiança, com a mais alta qualidade e tecnologia disponível no mercado.
+            <p className="mb-6 text-sm text-gray-300">
+              Transformando vidas através da beleza e do cuidado personalizado.
             </p>
-            
             <div className="flex space-x-4 pt-2">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+              <a href={siteConfig.socialMedia.instagram} target="_blank" rel="noopener noreferrer" 
                 className="flex items-center justify-center w-10 h-10 transition-all duration-300 border rounded-full text-gray-300 border-gray-700 hover:border-[var(--gold)] hover:text-[var(--gold)]">
                 <FaInstagram size={18} />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+              <a href={siteConfig.socialMedia.facebook} target="_blank" rel="noopener noreferrer" 
                 className="flex items-center justify-center w-10 h-10 transition-all duration-300 border rounded-full text-gray-300 border-gray-700 hover:border-[var(--gold)] hover:text-[var(--gold)]">
                 <FaFacebook size={18} />
               </a>
-              <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" 
+              <a href={siteConfig.socialMedia.whatsapp} target="_blank" rel="noopener noreferrer" 
                 className="flex items-center justify-center w-10 h-10 transition-all duration-300 border rounded-full text-gray-300 border-gray-700 hover:border-[var(--gold)] hover:text-[var(--gold)]">
                 <FaWhatsapp size={18} />
               </a>
@@ -68,7 +57,7 @@ const Footer = () => {
             <h3 className="mb-6 text-lg font-serif text-[var(--gold)]">Links Rápidos</h3>
             <div className="h-0.5 w-16 bg-[var(--gold)] opacity-30 mb-6"></div>
             <ul className="space-y-4">
-              {navItems.map((item) => (
+              {siteConfig.navigation.mainItems.map((item) => (
                 <li key={item.target}>
                   <ScrollLink
                     to={item.target}
@@ -91,16 +80,16 @@ const Footer = () => {
             <div className="h-0.5 w-16 bg-[var(--gold)] opacity-30 mb-6"></div>
             <ul className="space-y-4">
               <li className="text-sm text-gray-300 flex justify-between">
-                <span>Segunda a Sexta:</span>
-                <span className="text-white">9h às 19h</span>
+                <span>{siteConfig.businessHours.weekdays.days}:</span>
+                <span className="text-white">{siteConfig.businessHours.weekdays.hours}</span>
               </li>
               <li className="text-sm text-gray-300 flex justify-between">
-                <span>Sábado:</span>
-                <span className="text-white">9h às 16h</span>
+                <span>{siteConfig.businessHours.saturday.days}:</span>
+                <span className="text-white">{siteConfig.businessHours.saturday.hours}</span>
               </li>
               <li className="text-sm text-gray-300 flex justify-between">
-                <span>Domingo:</span>
-                <span className="text-white">Fechado</span>
+                <span>{siteConfig.businessHours.sunday.days}:</span>
+                <span className="text-white">{siteConfig.businessHours.sunday.hours}</span>
               </li>
             </ul>
             <div className="mt-6">
@@ -120,22 +109,25 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start text-sm">
                 <FaMapMarkerAlt className="flex-shrink-0 mt-1 mr-3 text-[var(--gold)]" />
-                <span className="text-gray-300">Av. Principal, 123, Centro<br />São Paulo - SP, 01000-000</span>
+                <span className="text-gray-300">
+                  {siteConfig.contact.address.street}, {siteConfig.contact.address.neighborhood}<br />
+                  {siteConfig.contact.address.city} - {siteConfig.contact.address.state}, {siteConfig.contact.address.zipCode}
+                </span>
               </li>
               <li className="flex items-center text-sm">
                 <FaPhone className="flex-shrink-0 mr-3 text-[var(--gold)]" />
-                <span className="text-gray-300">(11) 9876-5432</span>
+                <span className="text-gray-300">{siteConfig.contact.phone}</span>
               </li>
               <li className="flex items-center text-sm">
                 <FaEnvelope className="flex-shrink-0 mr-3 text-[var(--gold)]" />
-                <span className="text-gray-300">contato@belezaestetica.com.br</span>
+                <span className="text-gray-300">{siteConfig.contact.email}</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="pt-12 mt-12 text-sm text-center border-t border-gray-800">
-          <p className="text-gray-400">&copy; {currentYear} BelezaEstética. Todos os direitos reservados.</p>
+          <p className="text-gray-400">&copy; {currentYear} {siteConfig.companyName}. Todos os direitos reservados.</p>
           <div className="flex justify-center mt-4 space-x-6">
             <Link href="/politica-de-privacidade" className="text-gray-400 hover:text-[var(--gold)] transition-colors">
               Política de Privacidade

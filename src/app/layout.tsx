@@ -37,8 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`scroll-smooth ${montserrat.variable} ${cormorant.variable}`}>
-      <body className={montserrat.className}>
-        {children}
+      <body className={`${montserrat.className} overflow-x-hidden`}>
+        <div className="w-full overflow-hidden">
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -103,8 +103,8 @@ const ServicesSection = () => {
   return (
     <section id="services" className="py-24 bg-white section-padding relative">
       {/* Elementos decorativos */}
-      <div className="absolute top-0 left-0 w-32 h-32 border-t border-l border-[var(--secondary)] opacity-50"></div>
-      <div className="absolute bottom-0 right-0 w-32 h-32 border-b border-r border-[var(--secondary)] opacity-50"></div>
+      <div className="absolute top-0 left-0 w-24 h-24 border-t border-l border-[var(--secondary)] opacity-50"></div>
+      <div className="absolute bottom-0 right-0 w-24 h-24 border-b border-r border-[var(--secondary)] opacity-50"></div>
       
       <div className="container relative z-10">
         <div className="text-center mb-16">
@@ -206,8 +206,8 @@ const ServicesSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           {/* Elementos decorativos */}
-          <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[var(--gold)]"></div>
-          <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[var(--gold)]"></div>
+          <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-[var(--gold)]"></div>
+          <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-[var(--gold)]"></div>
           
           <span className="inline-block px-4 py-1 mb-4 text-xs tracking-wider uppercase bg-white text-[var(--primary)] rounded-full shadow-sm">
             Oferta Exclusiva
