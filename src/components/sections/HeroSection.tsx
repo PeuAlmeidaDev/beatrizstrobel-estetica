@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
-import Image from 'next/image';
 import DecorativeCorners from '../ui/DecorativeCorners';
 
 const HeroSection = () => {

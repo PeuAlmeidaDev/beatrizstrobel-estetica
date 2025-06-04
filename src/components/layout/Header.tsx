@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
-import Image from 'next/image';
 import { siteConfig } from '@/config/siteConfig';
 
 const Header = () => {
